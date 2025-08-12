@@ -1,4 +1,4 @@
-# Stan and R Code for Bayesian Meta-Analysis
+# Stan for Bayesian Meta-Analysis
 
 **[LAST UPDATED: 08.12.2025; TO BE EDITED]**
 

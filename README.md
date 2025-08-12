@@ -36,6 +36,7 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 
 
 
+
 ## References
 [^1] Jurgens TM, Whelan AM, Killian L, Doucette S, Kirk S, Foy E. Green tea for weight loss and weight maintenance in overweight or obese adults. *Cochrane Database of Systematic Reviews 2012, Issue 12*.
 

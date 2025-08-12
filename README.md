@@ -12,7 +12,14 @@ This repository contains my Stan and R code that can be adapted for various Baye
 ## Random Effects Model
 The random effects model has the following form:
 
+$$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma )$$
 
+$$\theta_{k} \sim Normal(\mu, \tau)$$
+
+with the priors:
+
+$$\mu \sim Normal(0, 1)$$
+$$\tau \sim HalfCauchy(0, 0.5)$$
 
 
 

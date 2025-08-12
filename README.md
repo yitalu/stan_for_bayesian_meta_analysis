@@ -10,7 +10,7 @@ This repository contains my Stan and R code that can be adapted for various Baye
 
 
 ## Random Effects Model
-The random effects model has the following form:
+The random effects model in the Stan script [meta_analysis_random_effect.stan](./code/meta_analysis_random_effect.stan) has the following form:
 
 $$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma )$$
 

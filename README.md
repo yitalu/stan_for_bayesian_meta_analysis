@@ -26,6 +26,10 @@ A forest plot of the effects on weight loss is generated using the [plot_forest.
 ![A forest plot of effects on weight loss](./figures/forest_plot_re.png)
 
 
+A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, is generated:
+
+![Posterior Predictive Plot Random Effects](./figures/weight_loss_effect_re.png)
+
 
 
 ## References

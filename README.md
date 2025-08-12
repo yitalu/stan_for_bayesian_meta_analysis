@@ -4,7 +4,7 @@
 
 
 ## Overview
-This repository contains my Stan and R code that can be adapted for various Bayesian meta analyses (hierarchical models). Currently, it includes a random effects model and a network meta-analysis. Data for the random effects model is from a study on the effects of green tea on weight loss [1] and is collected by [2].
+This repository contains my Stan and R code that can be adapted for various Bayesian meta analyses (hierarchical models). Currently, it includes a random effects model and a network meta-analysis. Data for the random effects model is from a study on the effects of green tea on weight loss [1] and collected by [2].
 
 
 
@@ -21,8 +21,9 @@ with the priors:
 $$\mu \sim Normal(0, 1)$$
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
+A forest plot of the effects on weight loss is generated using the [plot_forest.R](./code/plot_forest.R) script, which creates a visual representation of the estimated effects and their credible intervals:
 
-
+![A forest plot of effects on weight loss](./figures/forest_plot_re.png)
 
 
 

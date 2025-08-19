@@ -1,55 +1,49 @@
+library(dmetar)
+library(rstan)
 
 d <- read.csv("./data/therapy_formats.csv")
-colnames(d)
 
-d <- read.csv("./data/parkinsons.csv")
+colnames(d)
 head(d)
 View(d)
 
+n_studies <- length(unique(d$author))
+n_pairs <- nrow(d)
 
-make_var_cov_matrix <- function(study_id, treatment_id, std_err, variance){
-    
-    n_studies <- max(study_id)
-    n_pair <- length(study_id)
-    
-    varcov_matrix <- matrix(0, nrow = n_pair, ncol = n_pair)
+repeats <- unique(d$author[duplicated(d$author)])
+which(d$author %in% repeats)
 
-    for (i in 1:n_studies) {
-        ndx <- study_id == i
-        if (sum(ndx) > 1) {
-            varcov_matrix[ndx, ndx] <- variance[ndx][1]
-        }
-    }
-
-    diag(varcov_matrix) <- std_err^2
-    print(varcov_matrix)
-}
+d_2arms <- d[-which(d$author %in% repeats), ]
+d_3arms <- d[which(d$author %in% repeats), ]
 
 
-varcov <- make_var_cov_matrix(
-    study_id = d$s,
-    treatment_id = d$t,
-    std_err = d$se,
-    variance = d$v
-)
+treatments <- unique(c(d$treat1, d$treat2))
+print(treatments)
+n_treatments <- length(treatments)
+n_possible_pairs <- n_treatments * (n_treatments - 1) / 2
 
+
+treatments
+d_2arms$treat1_num <- match(d_2arms$treat1, treatments)
+d_2arms$treat2_num <- match(d_2arms$treat2, treatments)
 
 data_list <- list(
-    n_studies = nrow(d), 
-    n_treatments = max(d$t), 
-    treatment = d$t, 
-    control = d$b, 
-    effect = d$y, 
-    varcov = varcov, 
-    meanA = -0.73, 
-    sdA = 1/sqrt(21)
+  n_studies = n_studies,
+  n_studies_2arms = length(unique(d_2arms$author)),
+  n_studies_3arms = length(unique(d_3arms$author)),
+  n_treatments = n_treatments,
+  n_pairs = n_pairs,
+  mean_diff_2arms = d_2arms$TE,
+  std_err_2arms = d_2arms$seTE,
+  id_treatments_2arms = cbind(d_2arms$treat1_num, d_2arms$treat2_num)
 )
 
-
-fit_nma <- stan(
-    file = "code/network_meta_analysis.stan",
-    data = data_list,
-    chains = 4,
-    cores = 4,
-    iter = 2000
+fit_nma_re <- stan(
+  file = "code/network_meta_analysis.stan", 
+  data = data_list, 
+  chains = 4, 
+  cores = 4, 
+  iter = 2000
 )
+
+summary(fit_nma_re)

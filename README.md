@@ -12,9 +12,9 @@ This repository contains my Stan and R code that can be adapted for various Baye
 ## Random Effects Model
 The random effects model in the Stan script [meta_analysis_random_effect.stan](./code/meta_analysis_random_effect.stan) has the following form:
 
-$$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma )$$
+$$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma^2 )$$
 
-$$\theta_{k} \sim Normal(\mu, \tau)$$
+$$\theta_{k} \sim Normal(\mu, \tau^2)$$
 
 with the priors:
 
@@ -42,6 +42,8 @@ The scripts for the network meta-analysis are in [network_meta_analysis.R](./cod
 
 $$\hat{\theta_{k, ij}} \sim MVNormal(\theta_{k, ij}, \space \Sigma_k R \Sigma_k)$$
 
+$$\theta_{k, ij} \sim MVNormal(\theta_{ij}, \space \Tau)$$
+
 where 
 
 $$
@@ -52,10 +54,8 @@ $$
 0 & 0 & \sigma_{k,33} & \cdots & 0 \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & 0 & \cdots & \sigma_{k,nn}
-\end{bmatrix}
+\end{bmatrix},
 $$
-
-and
 
 $$
 R = 
@@ -64,8 +64,20 @@ R =
 1 & \rho & 1 & 1 \\
 1 & 1 & \rho & 1 \\
 1 & 1 & 1 & \rho
+\end{bmatrix}, and
+$$
+
+$$
+\Tau = 
+\begin{bmatrix}
+\tau^2 & \tau^2/2 & \tau^2/2 & \tau^2/2 \\
+\tau^2/2 & \tau^2 & \tau^2/2 & \tau^2/2 \\
+\tau^2/2 & \tau^2/2 & \tau^2 & \tau^2/2 \\
+\tau^2/2 & \tau^2/2 & \tau^2/2 & \tau^2
 \end{bmatrix}
 $$
+
+
 
 
 

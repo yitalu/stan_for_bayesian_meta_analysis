@@ -21,14 +21,17 @@ parameters {
     real<lower=0> tau; // between-study standard deviation
     // array[n_pairs] real theta_study; // true effect size for each study
     array[n_studies_2arms, 1] real theta_studies_2arms; // true effect size for each 2-arm study
-    array[n_studies_3arms, 3] real theta_studies_3arms; // true effect size for each 3-arm study
+    // array[n_studies_3arms, 3] real theta_studies_3arms; // true effect size for each 3-arm study
 }
 
 model {
     
     for (s in 1:n_studies_2arms) {
+        
         mean_diff_2arms[s] ~ normal(theta_studies_2arms[s, 1], std_err_2arms[s]);
+
         theta_studies_2arms[s, 1] ~ normal(theta[id_treatments_2arms[s, 1], id_treatments_2arms[s, 2]], tau);
+
     }
 
     // for (s in 1:n_studies_3arms) {
@@ -41,7 +44,6 @@ model {
     tau ~ cauchy(0, 0.5);
 
 }
-
 
 // model {
 //     // Likelihood for 2-arm studies

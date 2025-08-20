@@ -42,7 +42,7 @@ The scripts for the network meta-analysis are in [network_meta_analysis.R](./cod
 
 $$\hat{\theta_{k, ij}} \sim MVNormal(\theta_{k, ij}, \space \Sigma_k R \Sigma_k)$$
 
-$$\theta_{k, ij} \sim MVNormal(\theta_{ij}, \space \Tau)$$
+$$\theta_{k, ij} \sim MVNormal(\theta_{ij}, \space T)$$
 
 where 
 
@@ -70,7 +70,7 @@ $$
 and 
 
 $$
-\Tau = 
+T = 
 \begin{bmatrix}
 \tau^2 & \tau^2/2 & \tau^2/2 & \tau^2/2 \\
 \tau^2/2 & \tau^2 & \tau^2/2 & \tau^2/2 \\

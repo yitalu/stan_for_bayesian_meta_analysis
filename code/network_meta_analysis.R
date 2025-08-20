@@ -58,7 +58,11 @@ fit_nma_re <- stan(
 summary(fit_nma_re)
 # Print summary for theta and tau
 print(fit_nma_re, pars = c("theta", "tau"))
+
+png(filename = "./figures/direct_effects_2arms.png", width = 2000, height = 4000, res = 300)
 stan_plot(fit_nma_re, pars = c("theta", "tau"))
+dev.off()
+
 stan_trace(fit_nma_re, pars = c("theta", "tau"))
 stan_dens(fit_nma_re, pars = c("theta", "tau"))
 stan_hist(fit_nma_re, pars = c("theta", "tau"))

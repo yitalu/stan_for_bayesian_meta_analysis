@@ -76,8 +76,13 @@ T =
 \tau^2/2 & \tau^2 & \tau^2/2 & \tau^2/2 \\
 \tau^2/2 & \tau^2/2 & \tau^2 & \tau^2/2 \\
 \tau^2/2 & \tau^2/2 & \tau^2/2 & \tau^2
-\end{bmatrix}
+\end{bmatrix}, 
 $$
+
+with $\rho = 0.5$ and the same prior we used in the random effects model: 
+
+$$\theta_{ij} \sim Normal(0, 1)$$
+$$\tau \sim HalfCauchy(0, 0.5)$$
 
 
 

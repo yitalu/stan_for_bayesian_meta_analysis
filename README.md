@@ -88,7 +88,7 @@ $$\tau \sim HalfCauchy(0, 0.5)$$
 Part of the model for including indirect evidence and 3-arm studies is being developed, but below is the direct effects estimated by the code:
 
 <p align="center">
-<img src="./figures/direct_effects_2arms.png" alt="Direct effects from 2-arm studies" width="60%">
+<img src="./figures/direct_effects_2arms.png" alt="Direct effects from 2-arm studies" width="40%">
 <p>
 
 

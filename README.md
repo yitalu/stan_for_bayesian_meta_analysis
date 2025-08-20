@@ -64,8 +64,10 @@ R =
 1 & \rho & 1 & 1 \\
 1 & 1 & \rho & 1 \\
 1 & 1 & 1 & \rho
-\end{bmatrix}, and
+\end{bmatrix},
 $$
+
+and 
 
 $$
 \Tau = 

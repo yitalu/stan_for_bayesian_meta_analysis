@@ -4,7 +4,7 @@
 
 
 ## Overview
-This repository contains my Stan and R code that can be adapted for various Bayesian meta analyses (hierarchical models). Currently, it includes a random effects model and a network meta-analysis. Data for the random effects model is from a study on the effects of green tea on weight loss [^1] and collected by [^2].
+This repository contains my Stan and R code that can be adapted for various Bayesian meta analyses (hierarchical models). Currently, it includes a random effects model and a network meta-analysis. Data for the random effects model is from a study on the effects of green tea on weight loss [^1] and collected by [^2]. Data for the network meta-analysis is from an analysis of the effectiveness of different cognitive behavioral therapies for depression, studied by [^3]. The data is formatted in the R package *dmetar* by [^4].
 
 
 
@@ -37,7 +37,43 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 
 
 
+## Network Meta-Analysis
+The scripts for the network meta-analysis are in [network_meta_analysis.R](./code/network_meta_analysis.R) and [network_meta_analysis.Stan](./code/network_meta_analysis.stan). The model we estimate is:
+
+$$\hat{\theta_{k, ij}} \sim MVNormal(\theta_{k, ij}, \space \Sigma_k R \Sigma_k)$$
+
+where 
+
+$$
+\Sigma_k = 
+\begin{bmatrix}
+\sigma_{k,11} & 0 & 0 & \cdots & 0 \\
+0 & \sigma_{k,22} & 0 & \cdots & 0 \\
+0 & 0 & \sigma_{k,33} & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & \sigma_{k,nn}
+\end{bmatrix}
+$$
+
+and
+
+$$
+R = 
+\begin{bmatrix}
+\rho & 1 & 1 & 1 \\
+1 & \rho & 1 & 1 \\
+1 & 1 & \rho & 1 \\
+1 & 1 & 1 & \rho
+\end{bmatrix}
+$$
+
+
+
 ## References
 [^1] Jurgens TM, Whelan AM, Killian L, Doucette S, Kirk S, Foy E. Green tea for weight loss and weight maintenance in overweight or obese adults. *Cochrane Database of Systematic Reviews 2012, Issue 12*.
 
 [^2] Grant, R., & Di Tanna, G. L. (2025). *Bayesian meta-analysis: a practical introduction*. CRC Press.
+
+[^3] Cuijpers, P., Noma, H., Karyotaki, E., Cipriani, A., & Furukawa, T. A. (2019). Effectiveness and acceptability of cognitive behavior therapy delivery formats in adults with depression: a network meta-analysis. *JAMA psychiatry, 76*(7), 700-707.
+
+[^4] Harrer, M., Cuijpers, P., Furukawa, T.A., & Ebert, D.D. (2021). *Doing Meta-Analysis with R: A Hands-On Guide*. Boca Raton, FL and London: Chapman & Hall/CRC Press. ISBN 978-0-367-61007-4.

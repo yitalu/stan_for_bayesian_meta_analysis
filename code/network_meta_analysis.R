@@ -63,7 +63,10 @@ png(filename = "./figures/direct_effects_2arms.png", width = 2000, height = 3600
 stan_plot(fit_nma_re, pars = c("theta", "tau"))
 dev.off()
 
+png(filename = "./figures/trace_plot_2arms.png", width = 3600, height = 2000, res = 300)
 stan_trace(fit_nma_re, pars = c("theta", "tau"))
+dev.off()
+
 stan_dens(fit_nma_re, pars = c("theta", "tau"))
 stan_hist(fit_nma_re, pars = c("theta", "tau"))
 

@@ -92,7 +92,7 @@ Part of the model for including indirect evidence and 3-arm studies is being dev
 <p>
 
 <p align="center">
-<img src="./figures/trace_plot_2arms.png" alt="Direct effects from 2-arm studies" width="60%">
+<img src="./figures/trace_plot_2arms.png" alt="Direct effects from 2-arm studies" width="80%">
 <p>
 
 

@@ -45,8 +45,8 @@ $$\hat{\theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \spac
 $$
 \theta_{i, \space b_{i} k} \sim
 \begin{cases}
-Normal(\theta_{b_{i} k}, \space \tau^2), & \text{for \space} b_i = b \\
-Normal(\theta_{b k} - \theta_{b b_{i}}, \space \tau^2), & \text{for \space} b_i \neq b
+Normal(\theta_{b_{i} k}, \space \tau^2), & \text{for} \space b_i = b \\
+Normal(\theta_{b k} - \theta_{b b_{i}}, \space \tau^2), & \text{for} \space b_i \neq b
 \end{cases}
 $$
 

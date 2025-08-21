@@ -88,7 +88,7 @@ $$\tau \sim HalfCauchy(0, 0.5)$$
 Part of the model for including indirect evidence and 3-arm studies is being developed, but below is the estimated direct effects and their trace plots by the code:
 
 <p align="center">
-<img src="./figures/true_effects.png.png" alt="True Effects" width="40%">
+<img src="./figures/true_effects.png" alt="True Effects" width="40%">
 <p>
 
 <p align="center">

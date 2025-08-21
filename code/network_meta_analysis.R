@@ -18,9 +18,6 @@ authors <- unique(d$author)
 d$study_id <- match(d$author, authors)
 
 
-# d_2arms <- d[-which(d$author %in% repeats), ]
-# d_3arms <- d[which(d$author %in% repeats), ]
-
 treatments <- unique(c(d$treat1, d$treat2)) # "ind" "grp" "gsh" "tel" "ush" "wlc" "cau"
 n_treatments <- length(treatments) # 7
 n_possible_pairs <- n_treatments * (n_treatments - 1) / 2 # 21
@@ -29,24 +26,15 @@ n_possible_pairs <- n_treatments * (n_treatments - 1) / 2 # 21
 treatments <- c("cau", "grp", "gsh", "ind", "tel", "ush", "wlc")
 d$treatment_id <- match(d$treat1, treatments)
 d$baseline_id <- match(d$treat2, treatments)
-# d_2arms$treat1_num <- match(d_2arms$treat1, treatments)
-# d_2arms$treat2_num <- match(d_2arms$treat2, treatments)
 
-# pairs_2arms <- unique(cbind(d_2arms$treat1_num, d_2arms$treat2_num))
-# pairs_2arms
-# nrow(pairs_2arms)
 
 # Data list for Stan
 data_list <- list(
   n_studies = n_studies,
   n_pairs = n_pairs,
   n_treatments = n_treatments,
-  # n_studies_2arms = length(unique(d_2arms$author)),
-  # n_studies_3arms = length(unique(d_3arms$author)),
   effect_observed = d$TE,
   std_err = d$seTE,
-  # std_err_2arms = d_2arms$seTE,
-  # id_treatments_2arms = cbind(d_2arms$treat1_num, d_2arms$treat2_num)
   treatment = d$treatment_id, 
   baseline = d$baseline_id, 
   study = d$study_id
@@ -63,29 +51,27 @@ fit_nma_re <- stan(
 
 summary(fit_nma_re)
 # Print summary for theta and tau
-print(fit_nma_re, pars = c("theta", "tau"))
+print(fit_nma_re, pars = c("effect_true", "tau"))
 
-# png(filename = "./figures/direct_effects_2arms.png", width = 2000, height = 3600, res = 300)
-stan_plot(fit_nma_re, pars = c("theta", "tau"))
-# dev.off()
+png(filename = "./figures/true_effects.png", width = 2000, height = 3600, res = 300)
+stan_plot(fit_nma_re, pars = c("effect_true", "tau"))
+dev.off()
 
-# png(filename = "./figures/trace_plot_2arms.png", width = 3600, height = 2000, res = 300)
-stan_trace(fit_nma_re, pars = c("theta", "tau"))
-# dev.off()
+png(filename = "./figures/trace_plot.png", width = 3600, height = 2000, res = 300)
+stan_trace(fit_nma_re, pars = c("effect_true", "tau"))
+dev.off()
 
-stan_dens(fit_nma_re, pars = c("theta", "tau"))
-stan_hist(fit_nma_re, pars = c("theta", "tau"))
+stan_dens(fit_nma_re, pars = c("effect_true", "tau"))
+stan_hist(fit_nma_re, pars = c("effect_true", "tau"))
 
 # Extract posterior mean for theta and convert to 7 x 7 matrix
-theta_summary <- summary(fit_nma_re, pars = "theta")$summary
-theta_mean <- theta_summary[, "mean"]
-theta_matrix <- matrix(theta_mean, nrow = n_treatments, ncol = n_treatments, byrow = TRUE)
-print(theta_matrix)
-round(theta_matrix, 2)
+effect_true_summary <- summary(fit_nma_re, pars = "effect_true")$summary
+effect_true_mean <- effect_true_summary[, "mean"]
+as.vector(effect_true_mean)
 
 
 posterior_samples <- rstan::extract(fit_nma_re)
 names(posterior_samples)
-theta <- posterior_samples$theta
+effect_true <- posterior_samples$effect_true
 
-
+dim(effect_true)

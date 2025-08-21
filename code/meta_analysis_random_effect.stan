@@ -16,7 +16,7 @@ model {
 
     // Priors
     mu ~ normal(0, 1);
-    tau ~ cauchy(0, 0.5);
+    tau ~ cauchy(0, 0.5); // in fact Half Cauchy; tau is defined as real<lower=0> in the parameters block
 }
 
 generated quantities {

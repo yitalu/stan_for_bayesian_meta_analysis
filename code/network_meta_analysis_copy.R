@@ -7,58 +7,52 @@ colnames(d)
 head(d)
 View(d)
 
-n_studies <- length(unique(d$author)) # 182
-n_pairs <- nrow(d) # 184
+n_studies <- length(unique(d$author))
+n_pairs <- nrow(d)
 
-repeats <- unique(d$author[duplicated(d$author)]) # "Breiman, 2001"
-which(d$author %in% repeats) # 8 16 184
+repeats <- unique(d$author[duplicated(d$author)])
+which(d$author %in% repeats)
 
-# index study
-authors <- unique(d$author)
-d$study_id <- match(d$author, authors)
+d_2arms <- d[-which(d$author %in% repeats), ]
+d_3arms <- d[which(d$author %in% repeats), ]
 
 
-# d_2arms <- d[-which(d$author %in% repeats), ]
-# d_3arms <- d[which(d$author %in% repeats), ]
-
-treatments <- unique(c(d$treat1, d$treat2)) # "ind" "grp" "gsh" "tel" "ush" "wlc" "cau"
-n_treatments <- length(treatments) # 7
-n_possible_pairs <- n_treatments * (n_treatments - 1) / 2 # 21
+treatments <- unique(c(d$treat1, d$treat2))
+print(treatments)
+n_treatments <- length(treatments)
+n_possible_pairs <- n_treatments * (n_treatments - 1) / 2
 
 # reorder treatments
 treatments <- c("cau", "grp", "gsh", "ind", "tel", "ush", "wlc")
-d$treatment_id <- match(d$treat1, treatments)
-d$baseline_id <- match(d$treat2, treatments)
-# d_2arms$treat1_num <- match(d_2arms$treat1, treatments)
-# d_2arms$treat2_num <- match(d_2arms$treat2, treatments)
+d_2arms$treat1_num <- match(d_2arms$treat1, treatments)
+d_2arms$treat2_num <- match(d_2arms$treat2, treatments)
 
-# pairs_2arms <- unique(cbind(d_2arms$treat1_num, d_2arms$treat2_num))
-# pairs_2arms
-# nrow(pairs_2arms)
+pairs_2arms <- unique(cbind(d_2arms$treat1_num, d_2arms$treat2_num))
+pairs_2arms
+nrow(pairs_2arms)
 
 # Data list for Stan
 data_list <- list(
   n_studies = n_studies,
-  n_pairs = n_pairs,
+  n_studies_2arms = length(unique(d_2arms$author)),
+  n_studies_3arms = length(unique(d_3arms$author)),
   n_treatments = n_treatments,
-  # n_studies_2arms = length(unique(d_2arms$author)),
-  # n_studies_3arms = length(unique(d_3arms$author)),
-  effect_observed = d$TE,
-  std_err = d$seTE,
-  # std_err_2arms = d_2arms$seTE,
-  # id_treatments_2arms = cbind(d_2arms$treat1_num, d_2arms$treat2_num)
-  treatment = d$treatment_id, 
-  baseline = d$baseline_id, 
-  study = d$study_id
+  n_pairs = n_pairs,
+  mean_diff_2arms = d_2arms$TE,
+  std_err_2arms = d_2arms$seTE,
+  id_treatments_2arms = cbind(d_2arms$treat1_num, d_2arms$treat2_num)
 )
+
+
+
 
 # Fit model
 fit_nma_re <- stan(
-  file = "code/network_meta_analysis_backup.stan", 
+  file = "code/network_meta_analysis.stan", 
   data = data_list, 
   chains = 4, 
   cores = 4, 
-  iter = 8000
+  iter = 2000
 )
 
 summary(fit_nma_re)

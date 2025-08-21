@@ -99,15 +99,15 @@ $$\tau \sim HalfCauchy(0, 0.5)$$
 
 <br>
 
-Below shows the estimated direct effects and their trace plots:
-
-<br>
+Below shows the estimated true effects
 
 <p align="center">
-<img src="./figures/true_effects.png" alt="True Effects" width="30%">
+<img src="./figures/true_effects.png" alt="True Effects" width="40%">
 <p>
 
 <br>
+
+and their trace plots
 
 <p align="center">
 <img src="./figures/trace_plot.png" alt="Trace Plot" width="70%">

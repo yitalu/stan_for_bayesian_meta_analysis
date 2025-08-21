@@ -97,12 +97,17 @@ $$\theta_{bk} \sim Normal(0, 10^2)$$
 
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
+<br>
 
 Below shows the estimated direct effects and their trace plots:
+
+<br>
 
 <p align="center">
 <img src="./figures/true_effects.png" alt="True Effects" width="30%">
 <p>
+
+<br>
 
 <p align="center">
 <img src="./figures/trace_plot.png" alt="Trace Plot" width="70%">

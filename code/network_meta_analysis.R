@@ -64,7 +64,7 @@ dev.off()
 stan_dens(fit_nma_re, pars = c("effect_true", "tau"))
 stan_hist(fit_nma_re, pars = c("effect_true", "tau"))
 
-# Extract posterior mean for theta and convert to 7 x 7 matrix
+# Extract posterior mean for true effects
 effect_true_summary <- summary(fit_nma_re, pars = "effect_true")$summary
 effect_true_mean <- effect_true_summary[, "mean"]
 as.vector(effect_true_mean)

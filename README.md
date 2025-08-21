@@ -42,6 +42,8 @@ The scripts for the network meta-analysis are in [network_meta_analysis.R](./cod
 
 $$\hat{\theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \space \sigma_{i, \space b_{i} k}^2 )$$
 
+<br>
+
 $$
 \theta_{i, \space b_{i} k} \sim
 \begin{cases}
@@ -87,9 +89,12 @@ T =
 \end{bmatrix}, 
 $$ -->
 
+<br>
+
 with the following priors:
 
 $$\theta_{bk} \sim Normal(0, 10^2)$$
+
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
 

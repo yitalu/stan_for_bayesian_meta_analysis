@@ -40,11 +40,19 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 ## Network Meta-Analysis
 The scripts for the network meta-analysis are in [network_meta_analysis.R](./code/network_meta_analysis.R) and [network_meta_analysis.Stan](./code/network_meta_analysis.stan). The model we estimate is:
 
-$$\hat{\theta_{k, ij}} \sim MVNormal(\theta_{k, ij}, \space \Sigma_k R \Sigma_k)$$
+$$\hat{\theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \space \sigma_{i, \space b_{i} k}^2 )$$
 
-$$\theta_{k, ij} \sim MVNormal(\theta_{ij}, \space T)$$
+$$
+\theta_{i, \space b_{i} k} \sim
+\begin{cases}
+Normal(\theta_{b_{i} k}, \space \tau^2), & \text{for \space} b_i = b \\
+Normal(\theta_{b k} - \theta_{b b_{i}}, \space \tau^2), & \text{for \space} b_i \neq b
+\end{cases}
+$$
 
-where 
+<!-- $$\theta_{i, \space b_{i} k} \sim MVNormal(\theta_{ij}, \space T)$$ -->
+
+<!-- where 
 
 $$
 \Sigma_k = 
@@ -77,22 +85,22 @@ T =
 \tau^2/2 & \tau^2/2 & \tau^2 & \tau^2/2 \\
 \tau^2/2 & \tau^2/2 & \tau^2/2 & \tau^2
 \end{bmatrix}, 
-$$
+$$ -->
 
-with $\rho = 0.5$ and the same prior we used in the random effects model: 
+with the following priors:
 
-$$\theta_{ij} \sim Normal(0, 1)$$
+$$\theta_{bk} \sim Normal(0, 10^2)$$
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
 
-Part of the model for including indirect evidence and 3-arm studies is being developed, but below is the estimated direct effects and their trace plots by the code:
+Below shows the estimated direct effects and their trace plots:
 
 <p align="center">
 <img src="./figures/true_effects.png" alt="True Effects" width="40%">
 <p>
 
 <p align="center">
-<img src="./figures/trace_plot.png" alt="Trace Plot" width="80%">
+<img src="./figures/trace_plot.png" alt="Trace Plot" width="70%">
 <p>
 
 

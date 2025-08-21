@@ -114,6 +114,16 @@ and their trace plots
 <p>
 
 
+
+
+<br>
+From these estimated true effects, and in fact, their posterior samples, we can obtain effects between any two treatments in the network. Further analysis will be added soon.
+
+
+
+
+
+
 ## References
 [^1] Jurgens TM, Whelan AM, Killian L, Doucette S, Kirk S, Foy E. Green tea for weight loss and weight maintenance in overweight or obese adults. *Cochrane Database of Systematic Reviews 2012, Issue 12*.
 

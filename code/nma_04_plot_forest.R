@@ -56,6 +56,6 @@ forest_plot <- forest(
 )
 
 
-png(filename = "./figures/forest_plot_nma.png", width = 4800, height = 2000, res = 300)
+png(filename = "./figures/forest_plot_nma.png", width = 2400, height = 1200, res = 300)
 plot(forest_plot)
 dev.off()

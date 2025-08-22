@@ -101,8 +101,9 @@ $$\tau \sim HalfCauchy(0, 0.5)$$
 
 Below shows the estimated true effect of each treatment, using Care As Usual as the baseline:
 
-
-<img src="./figures/forest_plot_nma.png" alt="Treatment Effects" width="100%">
+<p align="center">
+<img src="./figures/forest_plot_nma.png" alt="Treatment Effects" width="80%">
+<p>
 
 
 <br>
@@ -110,7 +111,7 @@ Below shows the estimated true effect of each treatment, using Care As Usual as 
 and their trace plots
 
 <p align="center">
-<img src="./figures/trace_plot.png" alt="Trace Plot" width="70%">
+<img src="./figures/trace_plot.png" alt="Trace Plot" width="60%">
 <p>
 
 

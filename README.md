@@ -117,7 +117,13 @@ and their trace plots
 
 
 <br>
-From these estimated true effects, and in fact, their posterior samples, we can obtain effects between any two treatments in the network. Further analysis will be added soon.
+From these estimated true effects, and in fact, their posterior samples, we can obtain effects between any two treatments in the network.
+
+First, the network of comparisons between treatments pooled from all studies is shown:
+
+<p align="center">
+<img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="100%">
+<p>
 
 
 

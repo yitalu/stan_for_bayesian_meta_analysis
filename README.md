@@ -25,7 +25,7 @@ A forest plot of the effects on weight loss is generated using the [plot_forest.
 
 <!-- ![A forest plot of effects on weight loss](./figures/forest_plot_re.png) -->
 
-<img src="./figures/forest_plot_re.png" alt="Forest Plot Random Effects" width="100%">
+<img src="./figures/forest_plot_ma_re.png" alt="Forest Plot Random Effects" width="100%">
 
 
 A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, is generated:

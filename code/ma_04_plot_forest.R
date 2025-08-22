@@ -58,7 +58,7 @@ forest_plot <- forest(
   theme = my_theme
 )
 
-png(filename = "./figures/forest_plot_re.png", width = 4800, height = 2000, res = 300)
+png(filename = "./figures/forest_plot_ma_re.png", width = 4800, height = 2000, res = 300)
 plot(forest_plot)
 dev.off()
 

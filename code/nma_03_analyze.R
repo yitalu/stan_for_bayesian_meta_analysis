@@ -4,13 +4,13 @@ summary(fit_nma_re)
 # Print summary for theta and tau
 print(fit_nma_re, pars = c("effect_true", "tau"))
 
-png(filename = "./figures/true_effects.png", width = 2000, height = 3600, res = 300)
+# png(filename = "./figures/true_effects.png", width = 2000, height = 3600, res = 300)
 stan_plot(fit_nma_re, pars = c("effect_true", "tau"))
-dev.off()
+# dev.off()
 
-png(filename = "./figures/trace_plot.png", width = 3600, height = 2000, res = 300)
+# png(filename = "./figures/trace_plot.png", width = 3600, height = 2000, res = 300)
 stan_trace(fit_nma_re, pars = c("effect_true", "tau"))
-dev.off()
+# dev.off()
 
 stan_dens(fit_nma_re, pars = c("effect_true", "tau"))
 stan_hist(fit_nma_re, pars = c("effect_true", "tau"))

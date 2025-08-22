@@ -10,7 +10,7 @@ This repository contains my Stan and R code that can be adapted for various Baye
 
 
 ## Random Effects Model
-The random effects model in the Stan script [meta_analysis_random_effect.stan](./code/meta_analysis_random_effect.stan) has the following form:
+The random effects model in the Stan script [ma_02_fit_model.stan](./code/ma_02_fit_model.stan) has the following form:
 
 $$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma^2 )$$
 
@@ -38,7 +38,7 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 
 
 ## Network Meta-Analysis
-The scripts for the network meta-analysis are in [network_meta_analysis.R](./code/network_meta_analysis.R) and [network_meta_analysis.Stan](./code/network_meta_analysis.stan). The model we estimate is:
+The scripts for the network meta-analysis are in [nma_02_fit_model.R](./code/nma_02_fit_model.R) and [nma_02_fit_model.stan](./code/nma_02_fit_model.stan). The model we estimate is:
 
 $${\hat \theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \space \sigma_{i, \space b_{i} k}^2 )$$
 

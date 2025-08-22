@@ -13,7 +13,7 @@ summary(network)
 plot(network, use.description = TRUE) # Use full treatment names
 
 
-png(filename = "./figures/network.png", width = 3200, height = 2000, res = 300)
+png(filename = "./figures/network.png", width = 3200, height = 3200, res = 300)
 plot(network, 
     use.description = TRUE,            # Use full treatment names
     vertex.color = "#865151",             # node color

@@ -132,7 +132,7 @@ First, the network of comparisons between treatments pooled from all studies is 
 
 and the thickness of the edge represents the count of pairwise comparisons between treatments.
 
-
+Further analyses will be added soon.
 
 
 <br>

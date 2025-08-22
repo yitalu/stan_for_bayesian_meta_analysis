@@ -122,7 +122,7 @@ From these estimated true effects, and in fact, their posterior samples, we can 
 First, the network of comparisons between treatments pooled from all studies is shown:
 
 <p align="center">
-<img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="60%">
+<img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="80%">
 <p>
 
 and the thickness of the edge represents the count of pairwise comparisons between treatments.

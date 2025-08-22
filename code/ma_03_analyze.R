@@ -1,36 +1,5 @@
-rm(list = ls())
 # library(extraDistr)
-library(rstan)
 
-
-# Load the data
-d <- read.csv("./data/green_tea_weight_loss.csv")
-# colnames(d) 
-# head(d)
-
-
-# Prepare the data for Bayesian meta-analysis
-d$mean_diff <- d$mean_tea - d$mean_control
-
-d$var_pooled <- ((d$n_tea - 1) * d$sd_tea ^ 2 + (d$n_control - 1) * d$sd_control ^ 2) / (d$n_tea - 1 + d$n_control - 1)
-d$var_md <- (d$n_tea + d$n_control) * d$var_pooled / (d$n_tea * d$n_control)
-d$se_md <- sqrt(d$var_md)
-
-data_list <- list(
-    n_studies = nrow(d),
-    mean_diff = d$mean_diff,
-    std_err = d$se_md
-)
-
-
-# Fit the Bayesian meta-analysis model
-fit_re <- stan(
-    file = "code/meta_analysis_random_effect.stan",
-    data = data_list,
-    chains = 4,
-    cores = 4,
-    iter = 2000
-)
 
 summary(fit_re)
 print(fit_re, pars = c("mu", "tau", "theta"))
@@ -82,6 +51,3 @@ grid()
 # dev.off()
 
 
-
-
-# Forest Plot

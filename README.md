@@ -1,4 +1,4 @@
-# Stan for Meta-Analysis
+# Stan for Bayesian Meta-Analysis
 
 
 

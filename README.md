@@ -3,12 +3,14 @@
 
 
 
+<br>
 ## Overview
 This repository contains my Stan and R code that can be adapted for various Bayesian meta analyses (hierarchical models). Currently, it includes a random effects model and a random effects network meta-analysis (indirect treatment comparisons). Data for the random effects model is from a study on the effects of green tea on weight loss [^1] and collected by [^2]. Data for the network meta-analysis is from an analysis of the effectiveness of different cognitive behavioral therapies for depression, studied by [^3]. The data is formatted in the R package *dmetar* by [^4].
 
 
 
 
+<br>
 ## Random Effects Model
 The random effects model in the Stan script [ma_02_fit_model.stan](./code/ma_02_fit_model.stan) has the following form:
 
@@ -37,6 +39,7 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 
 
 
+<br>
 ## Network Meta-Analysis
 The scripts for the network meta-analysis are in [nma_02_fit_model.R](./code/nma_02_fit_model.R) and [nma_02_fit_model.stan](./code/nma_02_fit_model.stan). The model we estimate is:
 
@@ -131,6 +134,7 @@ and the thickness of the edge represents the count of pairwise comparisons betwe
 
 
 
+<br>
 ## References
 [^1]: Jurgens TM, Whelan AM, Killian L, Doucette S, Kirk S, Foy E. Green tea for weight loss and weight maintenance in overweight or obese adults. *Cochrane Database of Systematic Reviews 2012, Issue 12*.
 

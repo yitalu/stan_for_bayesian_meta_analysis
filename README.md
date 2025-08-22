@@ -21,7 +21,7 @@ with the priors:
 $$\mu \sim Normal(0, 1)$$
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
-A forest plot of the effects on weight loss is generated using the [plot_forest.R](./code/plot_forest.R) script, which creates a visual representation of the estimated effects and their credible intervals:
+A forest plot of the effects on weight loss is generated using the [ma_04_plot_forest.R](./code/ma_04_plot_forest.R) script, which creates a visual representation of the estimated effects and their credible intervals:
 
 <!-- ![A forest plot of effects on weight loss](./figures/forest_plot_re.png) -->
 

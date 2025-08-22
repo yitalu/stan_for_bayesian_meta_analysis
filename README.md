@@ -125,7 +125,7 @@ First, the network of comparisons between treatments pooled from all studies is 
 <img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="60%">
 <p>
 
-
+and the thickness of the edge represents the count of pairwise comparisons between treatments.
 
 
 

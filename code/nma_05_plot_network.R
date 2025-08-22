@@ -13,15 +13,15 @@ summary(network)
 plot(network, use.description = TRUE) # Use full treatment names
 
 
-png(filename = "./figures/network.png", width = 3200, height = 3200, res = 300)
+png(filename = "./figures/network.png", width = 3600, height = 3600, res = 300)
 plot(network, 
     use.description = TRUE,            # Use full treatment names
     vertex.color = "#865151",             # node color
     vertex.label.color = "gray10",     # treatment label color
     vertex.shape = "sphere",           # shape of the node
     vertex.label.family = "Helvetica", # label font
-    vertex.size = 12,                  # size of the node
-    vertex.label.dist = 3,             # distance label-node center
+    vertex.size = 10,                  # size of the node
+    vertex.label.dist = 2,             # distance label-node center
     vertex.label.cex = 2,              # node label size
     edge.curved = 0.2,                 # edge curvature
     edge.color = "pink"             # edge color

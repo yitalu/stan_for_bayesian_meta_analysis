@@ -28,7 +28,7 @@ where $\sigma_i = SE_i$ is the known standard error for study $i$.
 
 The (underlying) true effect for each study, $\theta_i$, is modeled as:
 
-$${\theta_k} \sim Normal(\mu, \tau^2)$$
+$${\theta_i} \sim Normal(\mu, \tau^2)$$
 
 , where $\mu$ represents the overall true effect across studies, and $\tau$ is the between-study standard deviation, capturing heterogeneity.
 

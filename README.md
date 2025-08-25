@@ -15,27 +15,46 @@ Currently, the repository includes code for a random effects model and a random 
 <br>
 
 ## Random Effects Model
-The random effects model in the Stan script [ma_02_fit_model.stan](./code/ma_02_fit_model.stan) has the following form:
 
-$$\hat{\theta_{k}} \sim Normal(\theta_{k}, \space \sigma^2 )$$
+We use a random effects meta-analysis to estimate the overall effect size across multiple studies. This approach accounts for variability in true effect sizes between studies, meaning that differences in study populations or methodologies may lead to heterogeneity. We only focus on the random effects model here, as the common effects model is just a special case of the random effects model when there is no heterogeneity (i.e., the between-study standard deviation $\tau$ is zero).
 
-$$\theta_{k} \sim Normal(\mu, \tau^2)$$
+Suppose we have $N$ studies ($i = 1, 2, ..., N$), each reporting an observed effect $\hat{\theta}_i$ and its standard error $SE_i$. The model assumes:
 
-with the priors:
+$${\hat{\theta}_i} \sim Normal(\theta_i, \sigma_i^2)$$
+
+where $\sigma_i = SE_i$ is the known standard error for study $i$.
+
+<br>
+
+The (underlying) true effect for each study, $\theta_i$, is modeled as:
+
+$${\theta_k} \sim Normal(\mu, \tau^2)$$
+
+, where $\mu$ represents the overall true effect across studies, and $\tau$ is the between-study standard deviation, capturing heterogeneity.
+
+<br>
+
+The priors for the parameters are:
 
 $$\mu \sim Normal(0, 1)$$
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
-A forest plot of the effects on weight loss is generated using the [ma_04_plot_forest.R](./code/ma_04_plot_forest.R) script, which creates a visual representation of the estimated effects and their credible intervals:
 
-<!-- ![A forest plot of effects on weight loss](./figures/forest_plot_re.png) -->
+
+<br>
+
+We use data from a meta-analysis of green tea's effects on weight loss [^1], which includes mean differences in weight loss (in kg) between green tea and a control group, along with their standard errors, from 12 studies. The script [ma_02_fit_model.stan](./code/ma_02_fit_model.stan) fits the model and generates posterior samples for $\mu$ (the overall effect) and $\tau$ (heterogeneity), as well as study-specific effects $\theta_i$, using Markov Chain Monte Carlo (MCMC) methods.
+
+These results can be visualized using a forest plot, which displays the estimated effects and their credible intervals for each study and the overall mean (see the script [ma_04_plot_forest.R](./code/ma_04_plot_forest.R)):
 
 <p align="center">
 <img src="./figures/forest_plot_ma_re.png" alt="Forest Plot Random Effects" width="75%">
 </p>
 
 
-A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, is generated:
+<br>
+
+A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, can also be generated:
 
 <p align="center">
 <img src="./figures/weight_loss_effect_re.png" alt="Posterior Predictive Plot Random Effects" width="75%">

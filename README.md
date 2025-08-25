@@ -47,7 +47,10 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 <br>
 
 ## Network Meta-Analysis
-The scripts for the network meta-analysis are in [nma_02_fit_model.R](./code/nma_02_fit_model.R) and [nma_02_fit_model.stan](./code/nma_02_fit_model.stan). The model we estimate is:
+
+To estimate the effects of multiple treatments, as compared to an overall baseline, we can use a network meta-analysis to synthesize evidence from a network of treatments across studies. This method is also called indirect treatment comparisons. The scripts for the following network meta-analysis are in [nma_02_fit_model.R](./code/nma_02_fit_model.R) and [nma_02_fit_model.stan](./code/nma_02_fit_model.stan).
+
+The model we estimate is:
 
 $${\hat \theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \space \sigma_{i, \space b_{i} k}^2 )$$
 
@@ -61,42 +64,7 @@ Normal(\theta_{b k} - \theta_{b b_{i}}, \space \tau^2), & \text{for} \space b_i 
 \end{cases}
 $$
 
-<!-- $$\theta_{i, \space b_{i} k} \sim MVNormal(\theta_{ij}, \space T)$$ -->
 
-<!-- where 
-
-$$
-\Sigma_k = 
-\begin{bmatrix}
-\sigma_{k,11} & 0 & 0 & \cdots & 0 \\
-0 & \sigma_{k,22} & 0 & \cdots & 0 \\
-0 & 0 & \sigma_{k,33} & \cdots & 0 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & 0 & \cdots & \sigma_{k,nn}
-\end{bmatrix},
-$$
-
-$$
-R = 
-\begin{bmatrix}
-\rho & 1 & 1 & 1 \\
-1 & \rho & 1 & 1 \\
-1 & 1 & \rho & 1 \\
-1 & 1 & 1 & \rho
-\end{bmatrix},
-$$
-
-and 
-
-$$
-T = 
-\begin{bmatrix}
-\tau^2 & \tau^2/2 & \tau^2/2 & \tau^2/2 \\
-\tau^2/2 & \tau^2 & \tau^2/2 & \tau^2/2 \\
-\tau^2/2 & \tau^2/2 & \tau^2 & \tau^2/2 \\
-\tau^2/2 & \tau^2/2 & \tau^2/2 & \tau^2
-\end{bmatrix}, 
-$$ -->
 
 <br>
 
@@ -137,12 +105,12 @@ First, the network of comparisons between treatments pooled from all studies is 
 
 and the thickness of the edge represents the count of pairwise comparisons between treatments.
 
-Once we have the posterior samples of the true effects of each treatment, we can compute the mean effect between any two treatments, along with their credible intervals. The table below shows the mean effects between all pairs of treatments:
+Once we have the posterior samples of the true effects of each treatment as compared to the baseline, we can compute the mean effect between any two treatments, along with their credible intervals. The table below shows the mean effects between all pairs of treatments:
 <p align="center">
 <img src="./figures/table_network_effects.png" alt="Table of Network Effects" width="100%">
 <p>
 
-Further analyses will be added soon.
+
 
 
 <br>

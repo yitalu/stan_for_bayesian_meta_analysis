@@ -96,6 +96,9 @@ There are 7 treatments in total, including the baseline treatment *Care As Usual
 - Unguided Self-Help
 - Waitlist
 
+
+<br>
+
 The following network produced by [nma_05_plot_network.R](./code/nma_05_plot_network.R) shows the pairwise comparisons between treatments across all studies. The thickness of the edge represents the count of pairwise comparisons between treatments.
 
 <p align="center">

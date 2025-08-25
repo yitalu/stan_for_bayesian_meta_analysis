@@ -50,7 +50,9 @@ A posterior predictive distribution of the mean difference, using 20 samples fro
 
 To estimate the effects of multiple treatments, as compared to an overall baseline, we can use a network meta-analysis to synthesize evidence from a network of treatments across studies. This method is also called indirect treatment comparisons. The scripts for the following network meta-analysis are in [nma_02_fit_model.R](./code/nma_02_fit_model.R) and [nma_02_fit_model.stan](./code/nma_02_fit_model.stan).
 
-The model we estimate is:
+Let's say we have $N$ studies ($i = 1, 2, ..., N$), each comparing two or more treatments from a set of $K$ treatments ($k = 1, 2, ..., K$). Each study compares treatment(s) $k$ to a study-specific baseline treatment $b_i$ (the baseline treatment may differ between studies) and observes a study-specific effect ${\hat \theta_{i, \space b_{i} k}}$ with its underlying true value $\theta_{i, \space b_{i} k}$.
+
+Given the observed effect sizes ${\hat \theta_{i, \space b_{i} k}}$ and their standard errors $SE_{i, \space b_{i} k}$ from all pairwise comparisons across studies, we estimate the overall true effects between treatments and a common baseline $\theta_{b k}$ :
 
 $${\hat \theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \space \sigma_{i, \space b_{i} k}^2 )$$
 
@@ -59,11 +61,14 @@ $${\hat \theta_{i, \space b_{i} k}} \sim Normal(\theta_{i, \space b_{i} k}, \spa
 $$
 \theta_{i, \space b_{i} k} \sim
 \begin{cases}
-Normal(\theta_{b_{i} k}, \space \tau^2), & \text{for} \space b_i = b \\
+Normal(\theta_{b k}, \space \tau^2), & \text{for} \space b_i = b \\
 Normal(\theta_{b k} - \theta_{b b_{i}}, \space \tau^2), & \text{for} \space b_i \neq b
 \end{cases}
 $$
 
+<br>
+
+$$\space \sigma_{i, \space b_{i} k}  = SE_{i, \space b_{i} k} $$
 
 
 <br>
@@ -75,6 +80,18 @@ $$\theta_{bk} \sim Normal(0, 10^2)$$
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
 <br>
+
+
+
+
+In the demonstration below, I use data from a network meta-analysis of different cognitive behavioral therapy (CBT) formats for treating depression [^3]. The treatments include:
+
+- Care As Usual (CAU)
+- Individual CBT (I-CBT)
+- Group CBT (G-CBT)
+- Guided Self-Help CBT (GSH-CBT)
+- Unguided Self-Help CBT (USH-CBT)
+
 
 Below shows the estimated true effect of each treatment, using Care As Usual as the baseline:
 

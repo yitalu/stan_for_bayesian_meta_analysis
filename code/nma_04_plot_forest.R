@@ -9,7 +9,7 @@ percentile_intervals_effect_true <- quantile(effect_true, probs = c(0.5, 0.025, 
 
 treatments
 treatments <- c(
-    "Care As Usual", "Group", "Guided Self-Help", "Individual", "Telephone", "Unguided Self-Help", "Waitlist Control"
+    "Care As Usual", "Group", "Guided Self-Help", "Individual", "Telephone", "Unguided Self-Help", "Waitlist"
 )
 
 forest_tab <- data.frame(

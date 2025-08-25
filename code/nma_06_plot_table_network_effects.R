@@ -1,6 +1,6 @@
 treatments
 treatments <- c(
-    "Care As Usual", "Group", "Guided Self-Help", "Individual", "Telephone", "Unguided Self-Help", "Waitlist Control"
+    "Care As Usual", "Group", "Guided Self-Help", "Individual", "Telephone", "Unguided Self-Help", "Waitlist"
 )
 
 

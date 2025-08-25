@@ -16,7 +16,7 @@ Currently, the repository includes code for a random effects model and a random 
 
 ## Random Effects Model
 
-We use a random effects meta-analysis to estimate the overall effect size across multiple studies. This approach accounts for variability in true effect sizes between studies, meaning that differences in study populations or methodologies may lead to heterogeneity. We only focus on the random effects model here, as the common effects model is just a special case of the random effects model when there is no heterogeneity (i.e., the between-study standard deviation $\tau$ is zero).
+We use a random effects meta-analysis to estimate the overall effect size across multiple studies. This approach accounts for variability in true effect sizes between studies, meaning that differences in study populations or methodologies may lead to heterogeneity. We only focus on the random effects model here, as the common effect model is just a special case of the random effects model when there is no heterogeneity (i.e., the between-study standard deviation $\tau$ is zero).
 
 Suppose we have $N$ studies ($i = 1, 2, ..., N$), each reporting an observed effect $\hat{\theta}_i$ and its standard error $SE_i$. The model assumes:
 

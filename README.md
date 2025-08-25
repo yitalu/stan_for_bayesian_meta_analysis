@@ -20,7 +20,7 @@ We use a random effects meta-analysis to estimate the overall effect size across
 
 Suppose we have $N$ studies ($i = 1, 2, ..., N$), each reporting an observed effect $\hat{\theta}_i$ and its standard error $SE_i$. The model assumes:
 
-$${\hat{\theta}_i} \sim Normal(\theta_i, \sigma_i^2)$$
+$${\hat{\theta}_i} \sim Normal(\theta_i, \sigma^2)$$
 
 where $\sigma_i = SE_i$ is the known standard error for study $i$.
 
@@ -45,7 +45,7 @@ $$\tau \sim HalfCauchy(0, 0.5)$$
 
 We use data from a meta-analysis of green tea's effects on weight loss [^1], which includes mean differences in weight loss (in kg) between green tea and a control group, along with their standard errors, from 12 studies. The script [ma_02_fit_model.stan](./code/ma_02_fit_model.stan) fits the model and generates posterior samples for $\mu$ (the overall effect) and $\tau$ (heterogeneity), as well as study-specific effects $\theta_i$, using Markov Chain Monte Carlo (MCMC) methods.
 
-These results can be visualized using a forest plot, which displays the estimated effects and their credible intervals for each study and the overall mean (see the script [ma_04_plot_forest.R](./code/ma_04_plot_forest.R)):
+These results can be visualized using a forest plot, which displays the estimated effects and their credible intervals for each study (see the script [ma_04_plot_forest.R](./code/ma_04_plot_forest.R)):
 
 <p align="center">
 <img src="./figures/forest_plot_ma_re.png" alt="Forest Plot Random Effects" width="75%">
@@ -54,7 +54,7 @@ These results can be visualized using a forest plot, which displays the estimate
 
 <br>
 
-A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, can also be generated:
+A posterior predictive distribution of the mean difference, using 20 samples from the posterior distribution, can also be generated to visualize the uncertainty in the overall effect estimate (see the script [ma_05_plot_posterior_predictive.R](./code/ma_05_plot_posterior_predictive.R)):
 
 <p align="center">
 <img src="./figures/weight_loss_effect_re.png" alt="Posterior Predictive Plot Random Effects" width="75%">

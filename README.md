@@ -136,7 +136,7 @@ and the thickness of the edge represents the count of pairwise comparisons betwe
 
 Once we have the posterior samples of the true effects of each treatment, we can compute the mean effect between any two treatments, along with their credible intervals. The table below shows the mean effects between all pairs of treatments:
 <p align="center">
-<img src="./figures/table_network_effects.png" alt="Table of Network Effects" width="90%">
+<img src="./figures/table_network_effects.png" alt="Table of Network Effects" width="100%">
 <p>
 
 Further analyses will be added soon.

@@ -59,6 +59,13 @@ for (i in 2:7) {
     }
 }
 
+effect_network_mean <- apply(effect_network, c(1, 2), mean)
+effect_network_percentile_025 <- apply(effect_network, c(1, 2), quantile, probs = 0.025)
+effect_network_percentile_975 <- apply(effect_network, c(1, 2), quantile, probs = 0.975)
+
+
+# Note: basically, what the above does is to compute below: 
+
 # effect_network[2, 1, ] <- effect_network[1, 1, ] - effect_network[1, 2, ]
 # effect_network[2, 2, ] <- effect_network[1, 2, ] - effect_network[1, 2, ]
 # effect_network[2, 3, ] <- effect_network[1, 3, ] - effect_network[1, 2, ]
@@ -75,7 +82,5 @@ for (i in 2:7) {
 # effect_network[3, 6, ] <- effect_network[1, 6, ] - effect_network[1, 3, ]
 # effect_network[3, 7, ] <- effect_network[1, 7, ] - effect_network[1, 3, ]
 
+# and so on...
 
-effect_network_mean <- apply(effect_network, c(1, 2), mean)
-effect_network_percentile_025 <- apply(effect_network, c(1, 2), quantile, probs = 0.025)
-effect_network_percentile_975 <- apply(effect_network, c(1, 2), quantile, probs = 0.975)

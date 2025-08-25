@@ -79,21 +79,35 @@ $$\theta_{bk} \sim Normal(0, 10^2)$$
 
 $$\tau \sim HalfCauchy(0, 0.5)$$
 
+
+
+
 <br>
 
+In the demonstration below, we use data from a network meta-analysis of different cognitive behavioral therapy (CBT) formats for treating depression [^3]. There are 182 studies in which 181 of them have a pairwise comparison between two treatments, and only one study has pairwise comparisons between all three treatments. This gives us a total of 184 pairwise comparisons across all studies (see [nma_01_load_data.R](./code/nma_01_load_data.R) for data description). 
+
+There are 7 treatments in total, including the baseline treatment *Care As Usual*:
+
+- Care As Usual (baseline)
+- Group
+- Guided Self-Help
+- Individual
+- Telephone
+- Unguided Self-Help
+- Waitlist
+
+The following network produced by [nma_05_plot_network.R](./code/nma_05_plot_network.R) shows the pairwise comparisons between treatments across all studies. The thickness of the edge represents the count of pairwise comparisons between treatments.
+
+<p align="center">
+<img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="50%">
+<p>
 
 
 
-In the demonstration below, I use data from a network meta-analysis of different cognitive behavioral therapy (CBT) formats for treating depression [^3]. The treatments include:
 
-- Care As Usual (CAU)
-- Individual CBT (I-CBT)
-- Group CBT (G-CBT)
-- Guided Self-Help CBT (GSH-CBT)
-- Unguided Self-Help CBT (USH-CBT)
+<br>
 
-
-Below shows the estimated true effect of each treatment, using Care As Usual as the baseline:
+After fitting the model, we obtain the following estimates of the true effects for each treatment compared to *Care As Usual*, along with their 95% credible intervals:
 
 <p align="center">
 <img src="./figures/forest_plot_nma.png" alt="Treatment Effects" width="80%">
@@ -102,7 +116,7 @@ Below shows the estimated true effect of each treatment, using Care As Usual as 
 
 <br>
 
-and their trace plots
+The trace plots of the posterior samples are shown below, indicating good mixing and convergence of the Markov Chain Monte Carlo (MCMC) chains:
 
 <p align="center">
 <img src="./figures/trace_plot.png" alt="Trace Plot" width="60%">
@@ -112,17 +126,18 @@ and their trace plots
 
 
 <br>
-From these estimated true effects, and in fact, their posterior samples, we can obtain effects between any two treatments in the network.
 
-First, the network of comparisons between treatments pooled from all studies is shown:
+Once we have the posterior samples for the true effects of each treatment as compared to the baseline, we can obtain the mean difference between any two treatments, along with their credible intervals, in our network. Specifically, while the estimated $\theta_{b k}$, ($b = 1$, and $k = 2, 3, ..., 6$) gives us only 6 effects, we can derive the mean effects between all pairs of treatments using the following relationship:
 
-<p align="center">
-<img src="./figures/network.png" alt="Network of Pairwise Comparisons" width="50%">
-<p>
+$$\theta_{k_1 k_2} = \theta_{b k_2} - \theta_{b k_1},$$
 
-and the thickness of the edge represents the count of pairwise comparisons between treatments.
+whether $k_1$ or $k_2$ is the baseline treatment or not. See the last part of [nma_03_analyze.R](./code/nma_03_analyze.R) for details.
 
-Once we have the posterior samples of the true effects of each treatment as compared to the baseline, we can compute the mean effect between any two treatments, along with their credible intervals. The table below shows the mean effects between all pairs of treatments:
+
+<br>
+
+The table below shows the mean effects between all pairs of treatments:
+
 <p align="center">
 <img src="./figures/table_network_effects.png" alt="Table of Network Effects" width="100%">
 <p>

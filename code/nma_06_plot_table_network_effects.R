@@ -20,7 +20,7 @@ table_network_effects <- data.frame(
 
   "Unguided Self-Help" = sprintf("%.2f (%.2f to %.2f)", effect_network_mean[1:7, 6], effect_network_percentile_025[1:7, 6], effect_network_percentile_975[1:7, 6]), 
 
-  "Waitlist Control" = sprintf("%.2f (%.2f to %.2f)", effect_network_mean[1:7, 7], effect_network_percentile_025[1:7, 7], effect_network_percentile_975[1:7, 7]), 
+  "Waitlist" = sprintf("%.2f (%.2f to %.2f)", effect_network_mean[1:7, 7], effect_network_percentile_025[1:7, 7], effect_network_percentile_975[1:7, 7]), 
 
   check.names = FALSE
 )

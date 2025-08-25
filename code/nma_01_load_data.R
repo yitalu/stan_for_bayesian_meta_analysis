@@ -6,9 +6,8 @@ rm(list = ls())
 # Load data
 d <- read.csv("./data/therapy_formats.csv")
 
-colnames(d)
-head(d)
-View(d)
+# head(d)
+# View(d)
 
 n_studies <- length(unique(d$author)) # 182
 n_pairs <- nrow(d) # 184

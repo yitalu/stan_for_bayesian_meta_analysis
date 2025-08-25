@@ -9,5 +9,5 @@ fit_nma_re <- stan(
   data = data_list, 
   chains = 4, 
   cores = 4, 
-  iter = 8000
+  iter = 10000
 )

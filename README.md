@@ -5,7 +5,7 @@
 
 ## Overview
 
-This repository contains Stan and R code for performing **Bayesian meta-analyses** (**hierarchical models**). Meta-analysis is a statistical method that combines results from multiple studies to estimate an overall effect. In a **random effects meta-analysis**, we assume that the true effect size may vary between studies due to differences in study populations or methods; this model accounts for such variability. A **network meta-analysis**, or **indirect treatment comparisons**, extends this approach to compare a network of multiple treatments across studies, allowing for both direct and indirect comparisons between treatments.
+This repository contains my Stan and R code for performing **Bayesian meta-analyses** (**hierarchical models**). Meta-analysis is a statistical method that combines results from multiple studies to estimate an overall effect. In a **random effects meta-analysis**, we assume that the true effect size may vary between studies due to differences in study populations or methods; this model accounts for such variability. A **network meta-analysis**, or **indirect treatment comparisons**, extends this approach to compare a network of multiple treatments across studies, allowing for both direct and indirect comparisons between treatments.
 
 Currently, the repository includes code for a random effects model and a random effects network meta-analysis (indirect treatment comparisons). The random effects model uses data from a study on the effects of green tea on weight loss [^1], collected by [^2]. The network meta-analysis uses data on the effectiveness of different cognitive behavioral therapies for depression, as studied by [^3]. The data is formatted in the R package *dmetar* by [^4].
 
